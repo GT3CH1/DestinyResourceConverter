@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<FSC-Destiny-AssetImport version="1" date="2021428">
+  <AssetGroup>
+    <AssetEntry>
+      <OrganizationCode><![CDATA[GSD]]></OrganizationCode>
+      <Template><![CDATA[Technology|Computer Equipment|Chromebooks]]></Template>
+      <field>
+        <name><![CDATA[Description]]></name>
+        <data><![CDATA[CHROMEBOOK]]></data>
+      </field>
+      <field>
+        <name><![CDATA[Replacement Price]]></name>
+        <data><![CDATA[225]]></data>
+      </field>
+      <field>
+        <name><![CDATA[Model]]></name>
+        <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+      </field>
+      <field>
+        <name><![CDATA[Manufacturer]]></name>
+        <data><![CDATA[HP]]></data>
+      </field>
+      <item>
+        <Barcode><![CDATA[5CD9209339]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD9209339]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD9209339]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD8155SY0]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD8155SY0]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD8155SY0]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD8295TT4]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD8295TT4]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD8295TT4]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD9211G69]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD9211G69]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD9211G69]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD92093LY]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD92093LY]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD92093LY]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD920933F]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD920933F]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD920933F]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD92091KM]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD92091KM]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD92091KM]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD92092W7]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD92092W7]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD92092W7]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[5CD92090TT]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[5CD92090TT]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[5CD92090TT]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+      <item>
+        <Barcode><![CDATA[]]></Barcode>
+        <SiteShortName><![CDATA[wlkjr]]></SiteShortName>
+        <Status><![CDATA[Available]]></Status>
+        <Condition><![CDATA[New]]></Condition>
+        <DistrictIdentifier><![CDATA[]]></DistrictIdentifier>
+        <PurchasePrice><![CDATA[225]]></PurchasePrice>
+        <PurchaseOrder><![CDATA[0000]]></PurchaseOrder>
+        <ProjectedLife><![CDATA[5]]></ProjectedLife>
+        <SalvageValue><![CDATA[0]]></SalvageValue>
+        <SerialNumber><![CDATA[]]></SerialNumber>
+        <LastPreventitiveMaintenanceDate><![CDATA[2021-4-28]]></LastPreventitiveMaintenanceDate>
+        <HomeLocation>
+          <Name><![CDATA[Student]]></Name>
+        </HomeLocation>
+        <field>
+          <name><![CDATA[Item Description/Number]]></name>
+          <data><![CDATA[11" G6 EE TOUCH SCREEN]]></data>
+        </field>
+      </item>
+    </AssetEntry>
+  </AssetGroup>
+</FSC-Destiny-AssetImport>

@@ -2,16 +2,16 @@ namespace DestinyConverter
 {
     public class DestinyItem
     {
-        public string Location { get; private set; }
-        public string Name { get; private set; }
+        public string Template { get; private set; }
+        public string Model { get; private set; }
         public string Description { get; private set; }
         public string Manufacturer { get; private set; }
         public double Price { get; private set; }
 
-        public DestinyItem(string location, string name, string description, string manufacturer, double price)
+        public DestinyItem(string template, string model, string description, string manufacturer, double price)
         {
-            Location = location;
-            Name = name;
+            Template = template;
+            Model = model;
             Description = description;
             Manufacturer = manufacturer;
             Price = price;
@@ -23,7 +23,7 @@ namespace DestinyConverter
         /// <returns></returns>
         public override string ToString()
         {
-            return Location + "," + Name + "," + Description + "," + Manufacturer + "," + Price.ToString();
+            return Template + "," + Model + "," + Description + "," + Manufacturer + "," + Price.ToString();
         }
     }
 }

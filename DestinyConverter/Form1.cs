@@ -26,7 +26,16 @@ namespace DestinyConverter
             fileBrowse.Click += BrowseForFile;
             optionList.ItemCheck += ItemCheck;
             poText.TextChanged += CheckPO;
+            convertButton.Click += ConvertFile;
             AddItems();
+        }
+
+        private void ConvertFile(object sender, EventArgs e)
+        {
+            bool idAsMac = optionList.GetItemChecked(0);
+            bool macComment = additionalOptionsList.GetItemChecked(0);
+            int currentSelection = resourceSelection.SelectedIndex;
+            reader.CreateExportXML(filePathToRead,idAsMac,macComment,poText.Text,reader.DestinyItems[currentSelection]);
         }
 
         /// <summary>
@@ -64,7 +73,7 @@ namespace DestinyConverter
             int index = resourceSelection.SelectedIndex;
 
             priceText.Text = reader.DestinyItems[index].Price.ToString();
-            locationText.Text = reader.DestinyItems[index].Location;
+            locationText.Text = reader.DestinyItems[index].Template;
             manufacturerText.Text = reader.DestinyItems[index].Manufacturer;
         }
 
