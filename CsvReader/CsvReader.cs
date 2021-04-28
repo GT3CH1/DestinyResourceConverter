@@ -38,7 +38,7 @@ namespace DestinyConverter
             string path =
                 Path.Combine(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
-                    "\\..\\..\\..\\..\\.\\Resources\\", "itemInfo.csv");
+                    "\\..\\..\\..\\.\\Resources\\", "itemInfo.csv");
             using (StreamReader reader = new StreamReader(path))
             {
                 while (!reader.EndOfStream)
@@ -48,7 +48,7 @@ namespace DestinyConverter
                     var item = values[1];
                     var description = values[2];
                     var manuf = values[3];
-                    var price = double.Parse(values[4]);
+                    var price = (int)double.Parse(values[4]);
 
                     DestinyItem newResources = new DestinyItem(location, item, description, manuf, price);
                     DestinyItems.Add(newResources);
@@ -56,7 +56,7 @@ namespace DestinyConverter
             }
         }
 
-        public void CreateExportXML(string filePathToImport, bool idAsMac, bool macComment, string purchaseOrder,
+        public bool CreateExportXML(string filePathToImport, bool idAsMac, bool macComment, string purchaseOrder,
             DestinyItem item)
         {
             ReadFromImport(filePathToImport, idAsMac);
@@ -72,7 +72,7 @@ namespace DestinyConverter
             XmlAttribute assertImportDate = destinyAssetImport.Attributes.Append(doc.CreateAttribute("date"));
             assertImportDate.Value = today.Year.ToString() + today.Month.ToString() + today.Day.ToString();
             doc.AppendChild(destinyAssetImport);
-            
+
             //Asset group
             XmlElement assetGroup = doc.CreateElement("AssetGroup");
 
@@ -96,20 +96,28 @@ namespace DestinyConverter
             CreateFieldElements(assetEntry, "Model", item.Description);
             CreateFieldElements(assetEntry, "Manufacturer", item.Manufacturer);
 
-            foreach(ImportItem importItem in ImportItems)
-                AddItem(importItem,item,assetEntry,purchaseOrder);
-            
+            foreach (ImportItem importItem in ImportItems)
+                AddItem(importItem, item, assetEntry, purchaseOrder, macComment);
+
             //End - AssetEntry
             assetGroup.AppendChild(assetEntry);
             destinyAssetImport.AppendChild(assetGroup);
-            
+            try
+            {
+                doc.Save(Directory.GetParent(filePathToImport) + @"\DestinyConversion.xml");
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
-            doc.Save(@"..\..\..\..\Resources\test.xml");
+            return true;
         }
 
         private void AddItem(ImportItem theItem, DestinyItem destinyItem, XmlElement root,
-            string order)
+            string order, bool macComment)
         {
+            string date = today.Year + "-" + today.Month + "-" + today.Day;
             XmlElement item = doc.CreateElement("item");
             XmlElement barcode = doc.CreateElement("Barcode");
             XmlElement shortName = doc.CreateElement("SiteShortName");
@@ -133,20 +141,17 @@ namespace DestinyConverter
             appendCData(condition, "New");
             appendCData(districtID, theItem.MacAddr);
             appendCData(price, destinyItem.Price.ToString());
-            //TODO:
-            // appendCData(acquired);
             appendCData(purchaseOrder, order);
             appendCData(lifespan, "5");
             appendCData(salvageValue, "0");
             appendCData(serialNumber, theItem.SerialNumber);
-            //TODO:
-            //appendCData maintenance
-
             XmlElement name = doc.CreateElement("Name");
             name.AppendChild(doc.CreateCDataSection("Student"));
             home.AppendChild(name);
-
-            lastMaint.AppendChild(doc.CreateCDataSection(today.Year + "-" + today.Month + "-" + today.Day));
+            if (macComment)
+                note.AppendChild(doc.CreateCDataSection("MAC: " + theItem.MacAddr));
+            lastMaint.AppendChild(doc.CreateCDataSection(date));
+            acquired.AppendChild(doc.CreateCDataSection(date));
             //TODO : note.
             item.AppendChild(barcode);
             item.AppendChild(shortName);
@@ -160,6 +165,9 @@ namespace DestinyConverter
             item.AppendChild(serialNumber);
             item.AppendChild(lastMaint);
             item.AppendChild(home);
+            if (macComment)
+                item.AppendChild(note);
+
             CreateFieldElements(item, "Item Description/Number", destinyItem.Description);
             root.AppendChild(item);
         }

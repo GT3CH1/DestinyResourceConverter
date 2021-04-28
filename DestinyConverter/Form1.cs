@@ -15,7 +15,9 @@ namespace DestinyConverter
         private CsvReader reader;
 
         private string filePathToRead;
-        private bool foundFile = false;
+        private bool foundFile;
+        private bool changedResource;
+        
 
         public Form1()
         {
@@ -27,6 +29,7 @@ namespace DestinyConverter
             optionList.ItemCheck += ItemCheck;
             poText.TextChanged += CheckPO;
             convertButton.Click += ConvertFile;
+            fileBrowse.Enabled = false;
             AddItems();
         }
 
@@ -35,7 +38,12 @@ namespace DestinyConverter
             bool idAsMac = optionList.GetItemChecked(0);
             bool macComment = additionalOptionsList.GetItemChecked(0);
             int currentSelection = resourceSelection.SelectedIndex;
-            reader.CreateExportXML(filePathToRead,idAsMac,macComment,poText.Text,reader.DestinyItems[currentSelection]);
+            bool result = reader.CreateExportXML(filePathToRead,idAsMac,macComment,poText.Text,reader.DestinyItems[currentSelection]);
+            if (result)
+                MessageBox.Show("Success!", "CSV to Destiny", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Error!", "CSV to Destiny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            EnableOptions(false);
         }
 
         /// <summary>
@@ -71,10 +79,12 @@ namespace DestinyConverter
         private void GetNewInfo(object sender, EventArgs e)
         {
             int index = resourceSelection.SelectedIndex;
-
+            changedResource = true;
             priceText.Text = reader.DestinyItems[index].Price.ToString();
             locationText.Text = reader.DestinyItems[index].Template;
             manufacturerText.Text = reader.DestinyItems[index].Manufacturer;
+
+            fileBrowse.Enabled = true;
         }
 
         /// <summary>
@@ -97,7 +107,7 @@ namespace DestinyConverter
             poText.Enabled = state;
             additionalOptionsList.Enabled = state;
         }
-
+        
         /// <summary>
         /// Enables the user to browse for a csv file.
         /// </summary>
