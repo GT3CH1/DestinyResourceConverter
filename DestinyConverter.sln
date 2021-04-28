@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DestinyConverter", "DestinyConverter\DestinyConverter.csproj", "{8A077B5E-17A0-4C81-BD9E-27B7A0E651EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvReader", "CsvReader\CsvReader.csproj", "{F8FDB9D9-C63A-4CB6-BD8B-A598628E83EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{30A61522-248C-4804-9A58-D1283DBA5F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,11 @@ Global
 		{8A077B5E-17A0-4C81-BD9E-27B7A0E651EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A077B5E-17A0-4C81-BD9E-27B7A0E651EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A077B5E-17A0-4C81-BD9E-27B7A0E651EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8FDB9D9-C63A-4CB6-BD8B-A598628E83EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8FDB9D9-C63A-4CB6-BD8B-A598628E83EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8FDB9D9-C63A-4CB6-BD8B-A598628E83EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8FDB9D9-C63A-4CB6-BD8B-A598628E83EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A61522-248C-4804-9A58-D1283DBA5F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A61522-248C-4804-9A58-D1283DBA5F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 EndGlobal
