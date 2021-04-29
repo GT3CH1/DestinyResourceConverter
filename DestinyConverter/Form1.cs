@@ -17,7 +17,7 @@ namespace DestinyConverter
         private string filePathToRead;
         private bool foundFile;
         private bool changedResource;
-        
+
 
         public Form1()
         {
@@ -28,22 +28,68 @@ namespace DestinyConverter
             fileBrowse.Click += BrowseForFile;
             optionList.ItemCheck += ItemCheck;
             poText.TextChanged += CheckPO;
+            commentBox.TextChanged += CheckCommentBox;
+            additionalOptionsList.ItemCheck += AdditionalOptionsSet;
             convertButton.Click += ConvertFile;
             fileBrowse.Enabled = false;
+            commentBox.Enabled = false;
+            conditionBox.Enabled = false;
+            availablityBox.Enabled = false;
+            additionalOptionsList.SetItemChecked(0,true);
+            optionList.SetItemChecked(0,true);
+            Constants.IDAsMAC = true;
+            Constants.HasMacComment = true;
             AddItems();
         }
 
+        /// <summary>
+        /// Delegate used to check whether or not something is typed in the comment box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CheckCommentBox(object sender, EventArgs e)
+        {
+            Constants.HasAdditionalNote = false;
+            if (commentBox.TextLength > 0)
+                Constants.HasAdditionalNote = true;
+            Constants.AdditionalNote = commentBox.Text;
+        }
+
+        /// <summary>
+        /// Launches the CSV to XML conversion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConvertFile(object sender, EventArgs e)
         {
-            bool idAsMac = optionList.GetItemChecked(0);
-            bool macComment = additionalOptionsList.GetItemChecked(0);
+            int selectedCondition = conditionBox.SelectedIndex;
+            int selectedStatus = availablityBox.SelectedIndex;
+            Constants.Condition = ConditionConstants.CONSTANTS[selectedCondition];
+            Constants.CurrentStatus = StatusConstants.CONSTANTS[selectedStatus];
             int currentSelection = resourceSelection.SelectedIndex;
-            bool result = reader.CreateExportXML(filePathToRead,idAsMac,macComment,poText.Text,reader.DestinyItems[currentSelection]);
+            bool result = reader.CreateExportXML(filePathToRead, poText.Text, reader.DestinyItems[currentSelection]);
             if (result)
                 MessageBox.Show("Success!", "CSV to Destiny", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("Error!", "CSV to Destiny", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            EnableOptions(false);
+        }
+
+        /// <summary>
+        /// Delegate used to check 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AdditionalOptionsSet(object sender, ItemCheckEventArgs e)
+        {
+            if (e.Index == 0)
+                Constants.HasMacComment = e.NewValue == CheckState.Checked;
+            if (e.Index == 1)
+                Constants.HasAdditionalNote = e.NewValue == CheckState.Checked;
+
+            if (Constants.HasAdditionalNote)
+                commentBox.Enabled = true;
+            else
+                commentBox.Enabled = false;
         }
 
         /// <summary>
@@ -53,9 +99,16 @@ namespace DestinyConverter
         /// <param name="e"></param>
         private void CheckPO(object sender, EventArgs e)
         {
+            
+            conditionBox.Enabled = false;
+            availablityBox.Enabled = false;
             convertButton.Enabled = false;
             if (poText.TextLength > 0)
+            {
+                conditionBox.Enabled = true;
+                availablityBox.Enabled = true;
                 convertButton.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -69,6 +122,7 @@ namespace DestinyConverter
                 for (int ix = 0; ix < optionList.Items.Count; ++ix)
                     if (e.Index != ix)
                         optionList.SetItemChecked(ix, false);
+            Constants.IDAsMAC = optionList.GetItemChecked(0);
         }
 
         /// <summary>
@@ -94,6 +148,12 @@ namespace DestinyConverter
         {
             foreach (DestinyItem readerDestinyItem in reader.DestinyItems)
                 resourceSelection.Items.Add(readerDestinyItem.Description);
+            foreach (string item in ConditionConstants.CONSTANTS)
+                conditionBox.Items.Add(item);
+            foreach (string item in StatusConstants.CONSTANTS)
+                availablityBox.Items.Add(item);
+            conditionBox.SelectedIndex = 0;
+            availablityBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -107,7 +167,7 @@ namespace DestinyConverter
             poText.Enabled = state;
             additionalOptionsList.Enabled = state;
         }
-        
+
         /// <summary>
         /// Enables the user to browse for a csv file.
         /// </summary>

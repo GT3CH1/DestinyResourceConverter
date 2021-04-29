@@ -38,6 +38,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Constants.cs" />
         <Compile Include="CsvReader.cs" />
         <Compile Include="DestinyItem.cs" />
         <Compile Include="ImportItem.cs" />

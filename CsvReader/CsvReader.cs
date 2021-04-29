@@ -48,7 +48,7 @@ namespace DestinyConverter
                     var item = values[1];
                     var description = values[2];
                     var manuf = values[3];
-                    var price = (int)double.Parse(values[4]);
+                    var price = (int) double.Parse(values[4]);
 
                     DestinyItem newResources = new DestinyItem(location, item, description, manuf, price);
                     DestinyItems.Add(newResources);
@@ -56,9 +56,10 @@ namespace DestinyConverter
             }
         }
 
-        public bool CreateExportXML(string filePathToImport, bool idAsMac, bool macComment, string purchaseOrder,
-            DestinyItem item)
+        public bool CreateExportXML(string filePathToImport, string purchaseOrder, DestinyItem item)
         {
+            bool idAsMac = Constants.IDAsMAC;
+
             ReadFromImport(filePathToImport, idAsMac);
             doc = new XmlDocument();
             XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
@@ -97,7 +98,7 @@ namespace DestinyConverter
             CreateFieldElements(assetEntry, "Manufacturer", item.Manufacturer);
 
             foreach (ImportItem importItem in ImportItems)
-                AddItem(importItem, item, assetEntry, purchaseOrder, macComment);
+                AddItem(importItem, item, assetEntry, purchaseOrder);
 
             //End - AssetEntry
             assetGroup.AppendChild(assetEntry);
@@ -115,8 +116,11 @@ namespace DestinyConverter
         }
 
         private void AddItem(ImportItem theItem, DestinyItem destinyItem, XmlElement root,
-            string order, bool macComment)
+            string order)
         {
+            bool additionalComment = Constants.HasAdditionalNote;
+            bool hasMacComment = Constants.HasMacComment;
+
             string date = today.Year + "-" + today.Month + "-" + today.Day;
             XmlElement item = doc.CreateElement("item");
             XmlElement barcode = doc.CreateElement("Barcode");
@@ -134,11 +138,10 @@ namespace DestinyConverter
             XmlElement home = doc.CreateElement("HomeLocation");
             XmlElement note = doc.CreateElement("ItemNote");
 
-            // Create barcode
             appendCData(barcode, theItem.SerialNumber);
             appendCData(shortName, "wlkjr");
-            appendCData(status, "Available");
-            appendCData(condition, "New");
+            appendCData(status, Constants.CurrentStatus);
+            appendCData(condition, Constants.Condition);
             appendCData(districtID, theItem.MacAddr);
             appendCData(price, destinyItem.Price.ToString());
             appendCData(purchaseOrder, order);
@@ -148,11 +151,13 @@ namespace DestinyConverter
             XmlElement name = doc.CreateElement("Name");
             name.AppendChild(doc.CreateCDataSection("Student"));
             home.AppendChild(name);
-            if (macComment)
-                note.AppendChild(doc.CreateCDataSection("MAC: " + theItem.MacAddr));
+            string comment = "";
+            if (hasMacComment)
+                comment += "MAC: " + theItem.MacAddr + "\n";
+            if (additionalComment)
+                comment += Constants.AdditionalNote + "\n";
             lastMaint.AppendChild(doc.CreateCDataSection(date));
             acquired.AppendChild(doc.CreateCDataSection(date));
-            //TODO : note.
             item.AppendChild(barcode);
             item.AppendChild(shortName);
             item.AppendChild(status);
@@ -165,8 +170,12 @@ namespace DestinyConverter
             item.AppendChild(serialNumber);
             item.AppendChild(lastMaint);
             item.AppendChild(home);
-            if (macComment)
+            
+            if (hasMacComment || additionalComment)
+            {
+                appendCData(note,comment);
                 item.AppendChild(note);
+            }
 
             CreateFieldElements(item, "Item Description/Number", destinyItem.Description);
             root.AppendChild(item);
@@ -210,7 +219,10 @@ namespace DestinyConverter
                 reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
-                    var values = reader.ReadLine().Split(',');
+                    string line = reader.ReadLine();
+                    if (line.Length < 1)
+                        continue;
+                    var values = line.Split(',');
                     string serial, mac;
                     try
                     {
