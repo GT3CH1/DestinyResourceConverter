@@ -105,7 +105,10 @@ namespace DestinyConverter
             destinyAssetImport.AppendChild(assetGroup);
             try
             {
-                doc.Save(Directory.GetParent(filePathToImport) + @"\DestinyConversion.xml");
+                string path = Directory.GetParent(filePathToImport) + @"\DestinyConversion.xml";
+                if(File.Exists(path))
+                    File.Delete(path);
+                doc.Save(path);
             }
             catch (Exception)
             {
