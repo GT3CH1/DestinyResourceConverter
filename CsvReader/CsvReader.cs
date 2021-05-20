@@ -138,6 +138,7 @@ namespace DestinyConverter
             XmlElement lastMaint = doc.CreateElement("LastPreventitiveMaintenanceDate");
             XmlElement home = doc.CreateElement("HomeLocation");
             XmlElement note = doc.CreateElement("ItemNote");
+            Console.WriteLine(Constants.HasBarcode);
             if(Constants.HasBarcode)
                 appendCData(barcode,theItem.Barcode);
             else
@@ -231,7 +232,7 @@ namespace DestinyConverter
                     string serial = string.Empty;
                     string barcode = string.Empty;
                     string districtID = string.Empty;
-                    if (!hasBarcode)
+                    if (hasBarcode)
                     {
                         try
                         {
@@ -261,7 +262,7 @@ namespace DestinyConverter
                     }
 
                     // "District ID as SN"
-                    if (!idAsMac)
+                    if (!idAsMac && !hasBarcode)
                         districtID = serial;
                     if(hasBarcode)
                         ImportItems.Add(new ImportItem(barcode,serial,districtID));

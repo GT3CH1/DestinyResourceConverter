@@ -285,7 +285,7 @@
             // 
             this.optionList.Enabled = false;
             this.optionList.FormattingEnabled = true;
-            this.optionList.Items.AddRange(new object[] {"District ID as MAC", "District ID as SN"});
+            this.optionList.Items.AddRange(new object[] {"District ID as MAC", "District ID as SN","District ID as 3rd. col"});
             this.optionList.Location = new System.Drawing.Point(6, 16);
             this.optionList.Name = "optionList";
             this.optionList.Size = new System.Drawing.Size(231, 49);
