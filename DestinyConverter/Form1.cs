@@ -85,7 +85,9 @@ namespace DestinyConverter
                 Constants.HasMacComment = e.NewValue == CheckState.Checked;
             if (e.Index == 1)
                 Constants.HasAdditionalNote = e.NewValue == CheckState.Checked;
-
+            if (e.Index == 2)
+                Constants.HasBarcode = e.NewValue == CheckState.Checked;
+            
             if (Constants.HasAdditionalNote)
                 commentBox.Enabled = true;
             else

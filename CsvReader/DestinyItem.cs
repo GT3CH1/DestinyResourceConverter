@@ -7,6 +7,8 @@ namespace DestinyConverter
         public string Description { get; private set; }
         public string Manufacturer { get; private set; }
         public double Price { get; private set; }
+        
+        public string Barcode { get; private set; }
 
         public DestinyItem(string template, string model, string description, string manufacturer, double price)
         {

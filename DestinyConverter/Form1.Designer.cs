@@ -144,7 +144,7 @@
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(100, 20);
             this.locationLabel.TabIndex = 4;
-            this.locationLabel.Text = "Model";
+            this.locationLabel.Text = "Location";
             this.locationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // csvModification
@@ -163,7 +163,7 @@
             this.csvModification.Controls.Add(this.fileBrowse);
             this.csvModification.Location = new System.Drawing.Point(12, 142);
             this.csvModification.Name = "csvModification";
-            this.csvModification.Size = new System.Drawing.Size(505, 185);
+            this.csvModification.Size = new System.Drawing.Size(505, 186);
             this.csvModification.TabIndex = 5;
             this.csvModification.TabStop = false;
             this.csvModification.Text = "Options";
@@ -258,7 +258,7 @@
             this.filePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.filePathLabel.Location = new System.Drawing.Point(87, 18);
             this.filePathLabel.Name = "filePathLabel";
-            this.filePathLabel.Size = new System.Drawing.Size(153, 8);
+            this.filePathLabel.Size = new System.Drawing.Size(153, 9);
             this.filePathLabel.TabIndex = 1;
             this.filePathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -307,7 +307,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(522, 339);
+            this.ClientSize = new System.Drawing.Size(522, 338);
             this.Controls.Add(this.AdditionalOptions);
             this.Controls.Add(this.csvModification);
             this.Controls.Add(this.itemInfoGroup);

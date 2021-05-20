@@ -9,6 +9,7 @@ namespace DestinyConverter
         public static bool HasAdditionalNote;
         public static bool IDAsMAC;
         public static bool HasMacComment;
+        public static bool HasBarcode;
     }
 
     public class StatusConstants

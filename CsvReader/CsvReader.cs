@@ -58,9 +58,7 @@ namespace DestinyConverter
 
         public bool CreateExportXML(string filePathToImport, string purchaseOrder, DestinyItem item)
         {
-            bool idAsMac = Constants.IDAsMAC;
-
-            ReadFromImport(filePathToImport, idAsMac);
+            ReadFromImport(filePathToImport);
             doc = new XmlDocument();
             XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
             XmlElement root = doc.DocumentElement;
@@ -106,7 +104,7 @@ namespace DestinyConverter
             try
             {
                 string path = Directory.GetParent(filePathToImport) + @"\DestinyConversion.xml";
-                if(File.Exists(path))
+                if (File.Exists(path))
                     File.Delete(path);
                 doc.Save(path);
             }
@@ -140,12 +138,14 @@ namespace DestinyConverter
             XmlElement lastMaint = doc.CreateElement("LastPreventitiveMaintenanceDate");
             XmlElement home = doc.CreateElement("HomeLocation");
             XmlElement note = doc.CreateElement("ItemNote");
-
-            appendCData(barcode, theItem.SerialNumber);
+            if(Constants.HasBarcode)
+                appendCData(barcode,theItem.Barcode);
+            else
+                appendCData(barcode, theItem.SerialNumber);
             appendCData(shortName, "wlkjr");
             appendCData(status, Constants.CurrentStatus);
             appendCData(condition, Constants.Condition);
-            appendCData(districtID, theItem.MacAddr);
+            appendCData(districtID, theItem.DistrictId);
             appendCData(price, destinyItem.Price.ToString());
             appendCData(purchaseOrder, order);
             appendCData(lifespan, "5");
@@ -156,7 +156,7 @@ namespace DestinyConverter
             home.AppendChild(name);
             string comment = "";
             if (hasMacComment)
-                comment += "MAC: " + theItem.MacAddr + "\n";
+                comment += "MAC: " + theItem.DistrictId + "\n";
             if (additionalComment)
                 comment += Constants.AdditionalNote + "\n";
             lastMaint.AppendChild(doc.CreateCDataSection(date));
@@ -173,10 +173,10 @@ namespace DestinyConverter
             item.AppendChild(serialNumber);
             item.AppendChild(lastMaint);
             item.AppendChild(home);
-            
+
             if (hasMacComment || additionalComment)
             {
-                appendCData(note,comment);
+                appendCData(note, comment);
                 item.AppendChild(note);
             }
 
@@ -215,8 +215,10 @@ namespace DestinyConverter
         /// </summary>
         /// <param name="filePathToImport"></param>
         /// <param name="idAsMac"></param>
-        private void ReadFromImport(string filePathToImport, bool idAsMac)
+        private void ReadFromImport(string filePathToImport)
         {
+            bool idAsMac = Constants.IDAsMAC;
+            bool hasBarcode = Constants.HasBarcode;
             using (StreamReader reader = new StreamReader(filePathToImport))
             {
                 reader.ReadLine();
@@ -226,24 +228,45 @@ namespace DestinyConverter
                     if (line.Length < 1)
                         continue;
                     var values = line.Split(',');
-                    string serial, mac;
-                    try
+                    string serial = string.Empty;
+                    string barcode = string.Empty;
+                    string districtID = string.Empty;
+                    if (!hasBarcode)
                     {
-                        serial = values[0];
-                        if (values.Length == 1)
-                            mac = serial;
-                        else
-                            mac = values[1];
+                        try
+                        {
+                            barcode = values[0];
+                            serial = values[1];
+                            districtID = values[2];
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        continue;
+                        try
+                        {
+                            serial = values[0];
+                            if (values.Length == 1)
+                                districtID = serial;
+                            else
+                                districtID = values[1];
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
                     }
 
                     // "District ID as SN"
                     if (!idAsMac)
-                        mac = serial;
-                    ImportItems.Add(new ImportItem(serial, mac));
+                        districtID = serial;
+                    if(hasBarcode)
+                        ImportItems.Add(new ImportItem(barcode,serial,districtID));
+                    else
+                        ImportItems.Add(new ImportItem(serial, districtID));
                 }
             }
         }
