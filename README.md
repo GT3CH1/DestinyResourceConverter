@@ -46,3 +46,6 @@ In `Resources/itemInfo.csv`, you can add as many items as you want. The format i
 * [ ] A way to save-to a location
 * [ ] An icon
 * [ ] Refactor the code base to make it much less ugly.
+
+## Issue Reporting / Feature request
+Please make an issue in the Issues page.
