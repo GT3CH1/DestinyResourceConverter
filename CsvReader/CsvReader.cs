@@ -56,7 +56,7 @@ namespace DestinyConverter
             }
         }
 
-        public bool CreateExportXML(string filePathToImport, string purchaseOrder, DestinyItem item)
+        public bool CreateExportXML(string filePathToImport, DestinyItem item)
         {
             ReadFromImport(filePathToImport);
             doc = new XmlDocument();
@@ -96,7 +96,7 @@ namespace DestinyConverter
             CreateFieldElements(assetEntry, "Manufacturer", item.Manufacturer);
 
             foreach (ImportItem importItem in ImportItems)
-                AddItem(importItem, item, assetEntry, purchaseOrder);
+                AddItem(importItem, item, assetEntry);
 
             //End - AssetEntry
             assetGroup.AppendChild(assetEntry);
@@ -105,8 +105,12 @@ namespace DestinyConverter
             {
                 string path = Directory.GetParent(filePathToImport) + @"\DestinyConversion.xml";
                 if (File.Exists(path))
+                {
                     File.Delete(path);
-                doc.Save(path);
+                    doc.Save(path);
+                }
+                else
+                    doc.Save(path);
             }
             catch (Exception)
             {
@@ -116,8 +120,7 @@ namespace DestinyConverter
             return true;
         }
 
-        private void AddItem(ImportItem theItem, DestinyItem destinyItem, XmlElement root,
-            string order)
+        private void AddItem(ImportItem theItem, DestinyItem destinyItem, XmlElement root)
         {
             bool additionalComment = Constants.HasAdditionalNote;
             bool hasMacComment = Constants.HasMacComment;
@@ -138,9 +141,8 @@ namespace DestinyConverter
             XmlElement lastMaint = doc.CreateElement("LastPreventitiveMaintenanceDate");
             XmlElement home = doc.CreateElement("HomeLocation");
             XmlElement note = doc.CreateElement("ItemNote");
-            Console.WriteLine(Constants.HasBarcode);
-            if(Constants.HasBarcode)
-                appendCData(barcode,theItem.Barcode);
+            if (Constants.HasBarcode)
+                appendCData(barcode, theItem.Barcode);
             else
                 appendCData(barcode, theItem.SerialNumber);
             appendCData(shortName, "wlkjr");
@@ -148,7 +150,7 @@ namespace DestinyConverter
             appendCData(condition, Constants.Condition);
             appendCData(districtID, theItem.DistrictId);
             appendCData(price, destinyItem.Price.ToString());
-            appendCData(purchaseOrder, order);
+            appendCData(purchaseOrder, Constants.PurchaseOrder);
             appendCData(lifespan, "5");
             appendCData(salvageValue, "0");
             appendCData(serialNumber, theItem.SerialNumber);
@@ -157,9 +159,9 @@ namespace DestinyConverter
             home.AppendChild(name);
             string comment = "";
             if (hasMacComment)
-                comment += "MAC: " + theItem.DistrictId + "\n";
+                comment += "MAC: " + theItem.DistrictId;
             if (additionalComment)
-                comment += Constants.AdditionalNote + "\n";
+                comment += Constants.AdditionalNote;
             lastMaint.AppendChild(doc.CreateCDataSection(date));
             acquired.AppendChild(doc.CreateCDataSection(date));
             item.AppendChild(barcode);
@@ -222,7 +224,6 @@ namespace DestinyConverter
             bool hasBarcode = Constants.HasBarcode;
             using (StreamReader reader = new StreamReader(filePathToImport))
             {
-                reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
@@ -264,8 +265,8 @@ namespace DestinyConverter
                     // "District ID as SN"
                     if (!idAsMac && !hasBarcode)
                         districtID = serial;
-                    if(hasBarcode)
-                        ImportItems.Add(new ImportItem(barcode,serial,districtID));
+                    if (hasBarcode)
+                        ImportItems.Add(new ImportItem(barcode, serial, districtID));
                     else
                         ImportItems.Add(new ImportItem(serial, districtID));
                 }

@@ -66,8 +66,9 @@ namespace DestinyConverter
             int selectedStatus = availablityBox.SelectedIndex;
             Constants.Condition = ConditionConstants.CONSTANTS[selectedCondition];
             Constants.CurrentStatus = StatusConstants.CONSTANTS[selectedStatus];
+            Constants.PurchaseOrder = poText.Text;
             int currentSelection = resourceSelection.SelectedIndex;
-            bool result = reader.CreateExportXML(filePathToRead, poText.Text, reader.DestinyItems[currentSelection]);
+            bool result = reader.CreateExportXML(filePathToRead, reader.DestinyItems[currentSelection]);
             if (result)
                 MessageBox.Show("Success!", "CSV to Destiny", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
