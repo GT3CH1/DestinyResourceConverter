@@ -181,7 +181,7 @@ namespace DestinyConverter
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.InitialDirectory = "c:\\";
-                dialog.Filter = "csv (*.csv)|*.csv";
+                dialog.Filter = "csv (*.csv)|*.csv|All files (*.*)|*.*";
                 dialog.RestoreDirectory = true;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
