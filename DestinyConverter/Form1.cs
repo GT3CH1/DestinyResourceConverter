@@ -13,7 +13,7 @@ namespace DestinyConverter
     public partial class Form1 : Form
     {
         private CsvReader reader;
-
+        private DestinyXML _destinyXml;
         private string filePathToRead;
         private bool foundFile;
         private bool changedResource;
@@ -35,8 +35,8 @@ namespace DestinyConverter
             commentBox.Enabled = false;
             conditionBox.Enabled = false;
             availablityBox.Enabled = false;
-            additionalOptionsList.SetItemChecked(0,true);
-            optionList.SetItemChecked(0,true);
+            additionalOptionsList.SetItemChecked(0, true);
+            optionList.SetItemChecked(0, true);
             Constants.IDAsMAC = true;
             Constants.HasMacComment = true;
             AddItems();
@@ -62,13 +62,14 @@ namespace DestinyConverter
         /// <param name="e"></param>
         private void ConvertFile(object sender, EventArgs e)
         {
+            _destinyXml = new DestinyXML();
             int selectedCondition = conditionBox.SelectedIndex;
             int selectedStatus = availablityBox.SelectedIndex;
             Constants.Condition = ConditionConstants.CONSTANTS[selectedCondition];
             Constants.CurrentStatus = StatusConstants.CONSTANTS[selectedStatus];
             Constants.PurchaseOrder = poText.Text;
             int currentSelection = resourceSelection.SelectedIndex;
-            bool result = reader.CreateExportXML(filePathToRead, reader.DestinyItems[currentSelection]);
+            bool result = _destinyXml.CreateExportXML(filePathToRead, reader.DestinyItems[currentSelection]);
             if (result)
                 MessageBox.Show("Success!", "CSV to Destiny", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
@@ -100,7 +101,6 @@ namespace DestinyConverter
         /// <param name="e"></param>
         private void CheckPO(object sender, EventArgs e)
         {
-            
             conditionBox.Enabled = false;
             availablityBox.Enabled = false;
             convertButton.Enabled = false;

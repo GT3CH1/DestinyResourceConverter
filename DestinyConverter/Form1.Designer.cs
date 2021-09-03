@@ -255,7 +255,7 @@
             // 
             // filePathLabel
             // 
-            this.filePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.filePathLabel.Location = new System.Drawing.Point(87, 18);
             this.filePathLabel.Name = "filePathLabel";
             this.filePathLabel.Size = new System.Drawing.Size(153, 9);
@@ -275,7 +275,7 @@
             // 
             this.additionalOptionsList.Enabled = false;
             this.additionalOptionsList.FormattingEnabled = true;
-            this.additionalOptionsList.Items.AddRange(new object[] {"Add MAC comment", "Add custom comment"});
+            this.additionalOptionsList.Items.AddRange(new object[] { "Add MAC comment", "Add custom comment" });
             this.additionalOptionsList.Location = new System.Drawing.Point(6, 69);
             this.additionalOptionsList.Name = "additionalOptionsList";
             this.additionalOptionsList.Size = new System.Drawing.Size(231, 49);
@@ -285,7 +285,7 @@
             // 
             this.optionList.Enabled = false;
             this.optionList.FormattingEnabled = true;
-            this.optionList.Items.AddRange(new object[] {"District ID as MAC", "District ID as SN","District ID as 3rd. col"});
+            this.optionList.Items.AddRange(new object[] { "District ID as MAC", "District ID as SN", "District ID as 3rd. col" });
             this.optionList.Location = new System.Drawing.Point(6, 16);
             this.optionList.Name = "optionList";
             this.optionList.Size = new System.Drawing.Size(231, 49);
@@ -307,7 +307,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(522, 338);
+            this.ClientSize = new System.Drawing.Size(525, 338);
             this.Controls.Add(this.AdditionalOptions);
             this.Controls.Add(this.csvModification);
             this.Controls.Add(this.itemInfoGroup);
