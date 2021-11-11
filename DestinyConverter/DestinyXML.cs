@@ -99,7 +99,7 @@ namespace DestinyConverter
             XmlElement lifespan = doc.CreateElement("ProjectedLife");
             XmlElement salvageValue = doc.CreateElement("SalvageValue");
             XmlElement serialNumber = doc.CreateElement("SerialNumber");
-            XmlElement lastMaint = doc.CreateElement("LastPreventitiveMaintenanceDate");
+            XmlElement lastMaint = doc.CreateElement("LastPreventiveMaintenanceDate");
             XmlElement home = doc.CreateElement("HomeLocation");
             XmlElement note = doc.CreateElement("ItemNote");
             if (Constants.HasBarcode)
@@ -137,6 +137,8 @@ namespace DestinyConverter
             item.AppendChild(serialNumber);
             item.AppendChild(lastMaint);
             item.AppendChild(home);
+            item.AppendChild(acquired);
+            
 
             if (hasMacComment || additionalComment)
             {
