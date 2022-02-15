@@ -40,7 +40,7 @@ namespace DestinyConverter
                     var item = values[1];
                     var description = values[2];
                     var manuf = values[3];
-                    var price = (int) double.Parse(values[4]);
+                    var price = (int)double.Parse(values[4]);
 
                     DestinyItem newResources = new DestinyItem(location, item, description, manuf, price);
                     DestinyItems.Add(newResources);
@@ -76,6 +76,8 @@ namespace DestinyConverter
                         try
                         {
                             barcode = values[0];
+                            if (barcode.Equals("SN"))
+                                continue;
                             serial = values[1];
                             districtID = values[2];
                         }
@@ -89,6 +91,8 @@ namespace DestinyConverter
                         try
                         {
                             serial = values[0];
+                            if (serial.Equals("SN"))
+                                continue;
                             if (values.Length == 1)
                                 districtID = serial;
                             else

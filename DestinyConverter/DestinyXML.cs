@@ -85,8 +85,9 @@ namespace DestinyConverter
         {
             bool additionalComment = Constants.HasAdditionalNote;
             bool hasMacComment = Constants.HasMacComment;
-
-            string date = today.Year + "-" + today.Month + "-" + today.Day;
+            var month = (today.Month < 10 ? "0" + today.Month : today.Month.ToString());
+            var day = (today.Day < 10 ? "0" + today.Day : today.Day.ToString());
+            string date = today.Year + "-" + month + "-" + day;
             XmlElement item = doc.CreateElement("item");
             XmlElement barcode = doc.CreateElement("Barcode");
             XmlElement shortName = doc.CreateElement("SiteShortName");
